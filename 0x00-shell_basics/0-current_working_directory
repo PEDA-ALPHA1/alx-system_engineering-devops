@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "/bin/pwd -P" \n
+echo "pwd" \n
