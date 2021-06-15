@@ -1,2 +1,2 @@
-#!/binbash
+#!/bin/bash
 cat /etc/hosts /etc/passwd
