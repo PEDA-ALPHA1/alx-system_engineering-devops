@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Use the while loop to print Best School 10x
+# Use the while loop to print 'Best School' 10x
 num=0
 while [ $num -lt 10 ];
 do
