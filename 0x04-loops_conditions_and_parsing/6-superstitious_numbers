@@ -5,19 +5,16 @@
 #+ displays 17 and then bad luck from Italy for the 17th loop iteration
 
 num=0
-while [ $num -lt 20 ]
+while [ $num -le 20 ]
 do
+	echo "$num"
+	case "$num" in
+		4)
+			echo "bad luck from China";;
+		9)
+			echo "bad luck from Japan";;
+		17)
+			echo "bad luck from Italy";;
+	esac
 	((num++))
-	if [ $num -eq 4 ]; then
-		echo "4"
-		echo "bad luck from China"
-	elif [ $num -eq 9 ]; then
-		echo "9"
-		echo "bad luck from Japan"
-	elif [ $num -eq 17 ]; then
-		echo "17"
-		echo "bad luck from Italy"
-	else
-		echo "$num"
-	fi
 done
