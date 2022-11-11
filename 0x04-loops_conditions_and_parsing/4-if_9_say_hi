@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Print "Best School" 10x
+#+ The 9th iteration prints "Best School" and "Hi" on a new line
+
+num=0
+while [ $num -lt 10 ]
+do
+	echo "Best School"
+	((num++))
+	if [[ num -eq 9 ]]; then
+		echo "Hi"
+	fi
+done
