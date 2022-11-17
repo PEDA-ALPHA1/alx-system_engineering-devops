@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Listen on port 98 of localhost and echo to stdout
+nc -l 98
