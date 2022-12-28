@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #Updates hostfile to change localhost to 127.0.0
 
-echo -e '127.0.0.2\tlocalhost\n8.8.8.8\t\tfacebook.com' > etc/hosts
+echo -e '127.0.0.2\tlocalhost\n8.8.8.8\t\tfacebook.com' > /etc/hosts
