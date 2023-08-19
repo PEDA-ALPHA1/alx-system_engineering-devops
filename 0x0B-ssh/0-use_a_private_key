@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # SSH using a private key
 
-ssh -i ~/.ssh/school ubuntu@52.86.220.32
+ssh -i ~/.ssh/school ubuntu@52.91.178.30
