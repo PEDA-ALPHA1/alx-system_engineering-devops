@@ -1,18 +1,27 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Installs, configures, and starts the server
+apt-get update
+apt-get -y install nginx
+ufw allow 'Nginx HTTP'
+mkdir -p /var/www/html
+chmod -R 755 /var/www
+echo 'Hello World!' > /var/www/html/index.html
+SERVER_CONFIG=\
+"server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+	root /var/www/html;
+	index index.html index.htm index.nginx-debian.html;
+	server_name _;
+	location / {
+		try_files \$uri \$uri/ =404;
+	}
+}"
 
-# Update package list
-sudo apt update
+bash -c "echo -e '$SERVER_CONFIG' > /etc/nginx/sites-enabled/default"
 
-# Install NGINX
-sudo apt install nginx
-
-# Configure NGINX to listen on port 80
-sudo sed -i 's/listen\s*80;/listen 80 default_server;/g' /etc/nginx/sites-available/default
-
-# Create index.html file with "Hello World!" string
-echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
-
-# Restart NGINX
-sudo /etc/init.d/nginx restart
-
-# This script updates the package list, installs NGINX, configures it to listen on port 80, creates an index.html file with the string “Hello World!”, and restarts NGINX. You can run this script by saving it to a file (e.g. configure_nginx.sh) and then running bash configure_nginx.sh in the terminal. Note that you can’t use systemctl for restarting NGINX.
+if [ "$(pgrep -c nginx)" -le 0 ]; then
+	service nginx start
+else
+	service nginx restart
+fi
