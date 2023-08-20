@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Update package list
+sudo apt update
+
+# Install NGINX
+sudo apt install nginx
+
+# Configure NGINX to listen on port 80
+sudo sed -i 's/listen\s*80;/listen 80 default_server;/g' /etc/nginx/sites-available/default
+
+# Create index.html file with "Hello World!" string
+echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
+
+# Restart NGINX
+sudo /etc/init.d/nginx restart
+
+# This script updates the package list, installs NGINX, configures it to listen on port 80, creates an index.html file with the string “Hello World!”, and restarts NGINX. You can run this script by saving it to a file (e.g. configure_nginx.sh) and then running bash configure_nginx.sh in the terminal. Note that you can’t use systemctl for restarting NGINX.
